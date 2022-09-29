@@ -1,0 +1,489 @@
+﻿@model InformationModel
+<!-- loader start -->
+<div class="loader_skeleton">
+    <header class="header-tools">
+        <div class="logo-menu-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="main-menu">
+                            <div class="menu-left">
+                                <div class="navbar">
+                                    <a href="javascript:void(0)" onclick="openNav()">
+                                        <div class="bar-style">
+
+                                            <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="brand-logo">
+                                    <a href="index.html">
+
+                                        <img src="~/Uploads/HomePage/HeaderImages/@Model.LogoImage"
+                                             class="img-fluid blur-up lazyload" alt="">
+
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="menu-right pull-right">
+                                <div>
+                                    <nav>
+                                        <div class="toggle-nav">
+                                            <i class="fa fa-bars sidebar-bar"></i>
+                                        </div>
+                                        <!-- Horizontal menu -->
+                                        <ul class="sm pixelstrap sm-horizontal">
+                                            <li>
+                                                <div class="mobile-back text-right">
+                                                    Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
+
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <a>@ResHeader.Home</a>
+                                            </li>
+                                            <li>
+                                                <a>@ResHeader.Tours</a>
+                                            </li>
+                                            <li>
+                                                <a>@ResHeader.Blog</a>
+                                            </li>
+                                            <li class="mega">
+
+                                                <a>
+
+                                                    @ResHeader.FEATURES
+                                                    <div class="lable-nav">@ResHeader.New</div>
+                                                </a>
+                                            </li>
+                                            <li>
+
+                                                <a>@ResHeader.Reviews</a>
+                                            </li>
+                                            <li>
+                                                <a>@ResHeader.About_us</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                                <div>
+                                    <div class="icon-nav d-none d-sm-block">
+                                        <ul>
+                                            <li class="onhover-div mobile-search">
+                                                <div>
+
+                                                    <img src="~/MainPage/assets/images/icon/search.png"
+                                                         onclick="openSearch()" class="img-fluid blur-up lazyload"
+                                                         alt="">
+                                                    <i class="ti-search" onclick="openSearch()"></i>
+
+                                                </div>
+                                            </li>
+                                            <li class="onhover-div mobile-setting">
+                                                <div>
+                                                    <img src="~/MainPage/assets/images/icon/setting.png"
+                                                         class="img-fluid blur-up lazyload" alt="photo"> <i class="ti-settings"></i>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="home-slider h-75vh">
+        <div class="home"></div>
+    </div>
+    <div class="banner-padding absolute-banner pb-0 tools-service">
+        <div class="container absolute-bg">
+            <div class="service p-0 ">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 service-block">
+                        <div class="media">
+                            <svg></svg>
+                            <div class="media-body">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 service-block">
+                        <div class="media">
+                            <svg></svg>
+                            <div class="media-body">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 service-block">
+                        <div class="media">
+                            <svg></svg>
+                            <div class="media-body">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 service-block">
+                        <div class="media">
+                            <svg></svg>
+                            <div class="media-body">
+                                <h4></h4>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container section-t-space">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3">
+                <div class="product-para">
+                    <p class="first"></p>
+                    <p class="second"></p>
+                </div>
+            </div>
+        </div>
+        <div class="category-tools">
+            <div class="category-m row">
+                <div class="col-xl-3 col-lg-4 col-md-6 col-12">
+                    <div class="category-wrapper pt-0">
+                        <div>
+                            <div class="img-ldr">
+                            </div>
+                            <h4></h4>
+                            <ul class="category-link">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <div class="ldr-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 d-md-flex d-none">
+                    <div class="category-wrapper pt-0">
+                        <div>
+                            <div class="img-ldr">
+                            </div>
+                            <h4></h4>
+                            <ul class="category-link">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <div class="ldr-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 d-lg-flex d-none">
+                    <div class="category-wrapper pt-0">
+                        <div>
+                            <div class="img-ldr">
+                            </div>
+                            <h4></h4>
+                            <ul class="category-link">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <div class="ldr-btn"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 d-none d-xl-flex">
+                    <div class="category-wrapper pt-0">
+                        <div>
+                            <div class="img-ldr">
+                            </div>
+                            <h4></h4>
+                            <ul class="category-link">
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                                <li></li>
+                            </ul>
+                            <div class="ldr-btn"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container section-b-space">
+            <div class="row section-t-space">
+                <div class="col-lg-6 offset-lg-3">
+                    <div class="product-para">
+                        <p class="first"></p>
+                        <p class="second"></p>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="no-slider center-detail five-product row">
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                        <div class="product-box">
+                            <div class="img-wrapper"></div>
+                            <div class="product-detail">
+                                <h4></h4>
+                                <h5></h5>
+                                <h6></h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- loader end -->
+<!-- header start -->
+<header class="header-tools">
+    <div class="mobile-fix-option"></div>
+    <div class="top-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12" style="text-align: center;">
+                    <div class="header-contact">
+                        <ul>
+                            <li>@ResHeader.Welcom_To @Model.WebSiteName</li>
+                            <li><i class="fa fa-phone" aria-hidden="true"></i>@ResHeader.CallUs : @Model.InformationPhone</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="logo-menu-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="main-menu">
+                        <div class="menu-left">
+                            <div class="navbar">
+                                <a href="javascript:void(0)" onclick="openNav()">
+                                    <div class="bar-style">
+                                        <i class="fa fa-bars sidebar-bar" aria-hidden="true"></i>
+                                    </div>
+                                </a>
+                                <div id="mySidenav" class="sidenav">
+                                    <a href="javascript:void(0)" class="sidebar-overlay" onclick="closeNav()"></a>
+                                    <nav>
+                                        <div onclick="closeNav()">
+                                            <div class="sidebar-back text-left">
+                                                <i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Back
+                                            </div>
+                                        </div>
+                                        <!-- Vertical Menu -->
+                                        <ul id="sub-menu" class="sm pixelstrap sm-vertical">
+                                            <li>
+                                                <a asp-action="Index" asp-controller="Home">@ResHeader.Home</a>
+                                            </li>
+                                            <li>
+                                                <a asp-action="List" asp-controller="Shop">@ResHeader.Tours</a>
+                                            </li>
+                                            <li>
+                                                <a href="/Home/Index#Blog">@ResHeader.Blog</a>
+                                            </li>
+
+                                            <li>
+                                                <a>features</a>
+                                                <ul>
+                                                    <li><a asp-controller="Home" asp-action="FAQ">FIQs</a></li>
+                                                    <li><a asp-action="Index" asp-controller="Concat">@ResHeader.Contact</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li>
+                                                <a asp-action="List" asp-controller="Reviews">@ResHeader.Reviews</a>
+                                            </li>
+                                            <li> <a asp-controller="About" asp-action="Index">@ResHeader.About_us</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                            <div class="brand-logo">
+                                <a href="index.html">
+                                    <img src="~/Uploads/HomePage/Logo/@Model.LogoImage" class="img-fluid blur-up lazyload"
+                                         alt="photo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="menu-right pull-right">
+                            <div>
+                                <nav id="main-nav">
+                                    <div class="toggle-nav">
+                                        <i class="fa fa-bars sidebar-bar"></i>
+                                    </div>
+                                    <!-- Horizontal menu -->
+                                    <ul id="main-menu" class="sm pixelstrap sm-horizontal">
+                                        <li>
+                                            <div class="mobile-back text-right">
+                                                Back<i class="fa fa-angle-right pl-2" aria-hidden="true"></i>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Index" asp-controller="Home">@ResHeader.Home</a>
+                                        </li>
+                                        <li>
+
+                                            <a asp-action="List" asp-controller="Shop">@ResHeader.Tours</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="/Home/Index#Blog">@ResHeader.Blog</a>
+                                        </li>
+                                        <li class="mega" id="hover-cls">
+
+                                            <a>
+
+                                                @ResHeader.FEATURES
+                                                <div class="lable-nav">@ResHeader.New</div>
+                                            </a>
+                                            <ul class="mega-menu full-mega-menu">
+                                                <li>
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col mega-box">
+                                                                <div class="link-section">
+                                                                    <div class="menu-content">
+                                                                        <ul>
+                                                                            <li>
+
+                                                                                <a asp-controller="Home"
+                                                                                   asp-action="FAQ">
+                                                                                    FAQs
+                                                                                </a>
+
+                                                                            </li>
+                                                                            <li><a asp-action="Index" asp-controller="Concat">@ResHeader.Contact</a></li>
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a asp-action="List" asp-controller="Reviews">@ResHeader.Reviews</a>
+                                        </li>
+                                        <li>
+                                            <a asp-controller="About" asp-action="Index">@ResHeader.About_us</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div>
+                                <div class="icon-nav">
+                                    <ul>
+                                        <li class="onhover-div mobile-search">
+                                            <div>
+
+                                                <img src="~/MainPage/assets/images/icon/search.png"
+                                                     onclick="openSearch()" class="img-fluid blur-up lazyload"
+                                                     alt="">
+                                                <i class="ti-search" onclick="openSearch()"></i>
+
+
+                                            </div>
+
+                                            <div id="search-overlay" class="search-overlay">
+                                                <div>
+                                                    <span class="closebtn" onclick="closeSearch()"
+                                                          title="Close Overlay">×</span>
+                                                    <div class="overlay-content">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-xl-12">
+                                                                    <form asp-action="Search" asp-controller="Shop"
+                                                                    method="Post" role="form" enctype="multipart/form-data"
+                                                                    >
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control"
+                                                                                   id="exampleInputPassword1"
+                                                                                   name="Search"
+                                                                                   placeholder="Search a Product">
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary">
+                                                                            <i class="fa fa-search"></i>
+                                                                        </button>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <li class="onhover-div mobile-cart">
+                                            <div>
+                                                <a asp-action="List" asp-controller="Shop">
+
+                                                    <img src="~/MainPage/assets/images/icon/cart.png"
+                                                         class="img-fluid blur-up lazyload" alt="photo">
+                                                    <i class="ti-shopping-cart"></i>
+                                                </a>
+
+                                            </div>
+                                        </li>
+                                        <li class="onhover-div mobile-setting">
+                                            <div>
+                                                <img src="~/MainPage/assets/images/icon/setting.png"
+                                                     class="img-fluid blur-up lazyload" alt="photo"> <i class="ti-settings"></i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header end -->

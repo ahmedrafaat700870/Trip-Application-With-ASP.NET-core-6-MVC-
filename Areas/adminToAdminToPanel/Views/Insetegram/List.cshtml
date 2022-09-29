@@ -1,0 +1,96 @@
+﻿@model List<InestegramModel>
+<div class="page-header">
+    <h3 class="page-title"> Instegram </h3>
+</div>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Add</h4>
+            <form class="forms-sample" asp-controller="Insetegram" asp-action="Add"
+                  method="post" enctype="multipart/form-data" role="form">
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Add Src</label>
+                    <input type="text" name="src" class="form-control" id="exampleInputUsername1" placeholder="Instegram Src">
+                </div>
+                <div class="form-group">
+                    <label>photo upload</label>
+                    <input type="file" name="photo" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+@if (Model.Count != 0)
+{
+    <div class="row">
+        <div class="col-lg-8 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title"> Table</h4>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Insetegram Src</th>
+                                <th>img</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (var i = 0; i < Model.Count; i++)
+                            {
+                                <tr>
+                                    <td>
+                                        @{
+                                            var counter = i + 1;
+                                        }
+
+                                        @counter
+                                    </td>
+                                    <td>@Model[i].InstagramSrc</td>
+                                    <td>
+                                        <img src="~/Uploads//Insetegram/@Model[i].PhotoSrc" class="me-2" alt="image">
+
+
+                                    </td>
+                                    <td><a class="btn btn-gradient-danger btn-fw" asp-action="Delete" asp-controller="Insetegram" asp-route-InstegramId="@ViewBag.OptoinId" asp-route-id="@Model[i].InstagramId">Delete</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div style="text-aligne: center;" class="alert alert-warning" role="alert"> No Data To Show  </div>
+}
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}

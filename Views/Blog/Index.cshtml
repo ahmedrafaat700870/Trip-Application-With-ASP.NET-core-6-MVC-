@@ -1,0 +1,131 @@
+﻿@model BlogModel
+@{
+    ViewBag.Title = "Blog";
+}
+<section class="blog-detail-page section-b-space ratio2_3  " id="blog">
+    <!-- breadcrumb start-->
+    <div class="breadcrumb-section medai">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title" style="text-align:center ;">
+                        <h2>@ResBlog.BlogPageCommentHeaderTitel</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end-->
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 blog-detail">
+                @if (Model.TbBlogPhotos.ToList()[0].BlogPhotoSrc != null)
+                {
+                    <img src="~/Uploads/Blog/@Model.TbBlogPhotos.ToList()[0].BlogPhotoSrc"
+                     class="img-fluid blur-up lazyloaded" alt="">
+                }
+                <h3>@Model.BlogTitel</h3>
+                <ul class="post-social">
+                    <li>@Model.BlogCreatedDate.ToString("mm/yy/dd")</li>
+                    <li>Posted By : @Model.BlogCreatedBy</li>
+                    <li><i class="fa fa-comments"></i> @Model.TbRiviews.ToList().Count Comment</li>
+                </ul>
+                <p>Model.TbBlogPhotos.ToList()[0].BlogDescription</p>
+            </div>
+        </div>
+
+        <div class="row section-b-space blog-advance">
+            @for (var i = 1; i < Model.TbBlogPhotos.Count; i++)
+            {
+                @if (Model.TbBlogPhotos.ToList()[i].BlogPhotoSrc != null)
+                {
+                    <div class="col-lg-6">
+                        <div class="bg-size blur-up lazyloaded" style="background-image: url(&quot;../,./Uploads/Blog/@Model.TbBlogPhotos.ToList()[i].BlogPhotoSrc;); background-size: cover; background-position: center center; display: block;">
+                            <img src="~/Uploads/Blog/@Model.TbBlogPhotos.ToList()[i].BlogPhotoSrc" class="img-fluid blur-up lazyload bg-img" alt="" style="display: none;">
+                        </div>
+                    </div>
+                }
+            }
+            @for (var i = 1; i < Model.TbBlogPhotos.Count; i++)
+            {
+                @if (Model.TbBlogPhotos.ToList()[i].BlogPhotoSrc != null)
+                {
+                    <div class="col-lg-6">
+                        <p>
+                            @Model.TbBlogPhotos.ToList()[i].BlogDescription
+                        </p>
+                    </div>
+                }
+            }
+        </div>
+
+
+        @*review section *@
+        @if (Model.TbRiviews.Count > 0)
+        {
+            @for (var i = 0; i < 10; i++)
+            {
+                @if (Model.TbRiviews.Count > i)
+                {
+                    <div class="col-sm-12">
+                        <ul class="comment-section">
+                            <li>
+                                <div class="media">
+                                    <img src="~/MainPage/assets/images/avtar.jpg" alt="Generic placeholder image">
+                                    <div class="media-body">
+                                        <h6>@Model.TbRiviews.ToList()[i].Name<span>( @Model.TbRiviews.ToList()[i].ReviewDate )</span></h6>
+                                        <p>
+                                            @Model.TbRiviews.ToList()[i].ReviewDescription
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                else
+                    break;
+            }
+        }
+
+        @*review section end*@
+
+
+        @*    Comment Section Start *@
+        <div class="row blog-contact" style=" margin-top : 50px;">
+            <div class="col-sm-12">
+                <h2>@ResBlog.BlogPageCommentSectionTitel</h2>
+                <form class="theme-form" asp-action="SaveComment" asp-controller="Blog"
+                      method="post"
+                      role="form"
+                      enctype="multipart/form-data">
+                    <div class="form-row">
+                        <input type="hidden" name="BlogId" value="@Model.BlogId" />
+                        <div class="col-md-12">
+                            <label for="name">@ResBlog.BlogPageCommentSectionName</label>
+                            <input required type="text" class="form-control" name="name" id="name" placeholder="Gib deinen Namen ein" required="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="email">@ResBlog.BlogPageCommentSectionEmail</label>
+                            <input required type="text" class="form-control" name="email" id="email" placeholder="Email" required="">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="exampleFormControlTextarea1">@ResBlog.BlogPageCommentSectionComment</label>
+                            <textarea required class="form-control" name="comment" placeholder="Schreiben Sie Ihren Kommentar" id="exampleFormControlTextarea1" rows="6"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <button class="btn btn-solid" type="submit">@ResBlog.BlogPageCommentSectionSubmitButton</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @*    Comment Section End *@
+    </div>
+</section>
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,67 @@
+﻿@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/quill/quill.snow.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/simplemde/simplemde.min.css">
+    <!-- End plugin css for this page -->
+}
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <div class="main-panel">
+            <div class="content-wrapper">
+                <div class="page-header">
+                    <h3 class="page-title"> Text editors </h3>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Editors</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Text editors</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Tinymce Editor</h4>
+                                <textarea id='tinyMceExample'>
+                        Edit your content here...
+                      </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row grid-margin">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Quill Editor</h4>
+                                <div id="quillExample1" class="quill-container">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Simplemde Editor</h4>
+                                <textarea id="simpleMde">
+                      </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+@section PluginScripts{
+         <!-- plugin js for this page -->
+        <script src="~/Admin/assets/vendors/tinymce/tinymce.min.js"></script>
+        <script src="~/Admin/assets/vendors/quill/quill.min.js"></script>
+        <script src="~/Admin/assets/vendors/simplemde/simplemde.min.js"></script>
+        <!-- plugin js for this page -->
+}
+@section Scripts{
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/editorDemo.js"></script>
+    <!-- End custom js for this page -->
+}

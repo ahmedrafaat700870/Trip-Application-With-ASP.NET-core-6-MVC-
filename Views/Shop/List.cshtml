@@ -1,0 +1,341 @@
+﻿@model CusStore
+@{
+    ViewBag.Title = "Tours";
+}
+<div class="breadcrumb-section medai">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="page-title" style="text-align: center;">
+                    <h2>Tours</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- section start -->
+<section class="section-b-space ratio_asos ">
+    <div class="collection-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="collection-content col">
+                    <div class="page-main-content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="top-banner-wrapper">
+                                    <a href="#"><img src="~/Photo/Shop.jpeg" class="img-fluid blur-up lazyload" alt=""></a>
+                                    <div class="top-banner-content small-section">
+                                        <p>
+                                            Wenn der Strand nicht mehr ausreichend ist um Sie zufrieden zu stellen, können Sie ihr Abenteuer von einer Vielzahl von Aktivitäten und kurze Ausflüge ab Hurghada finden. Online buchen Yallatourshurghada und wählen Sie Ihre Reise von mehreren Möglichkeiten: Quad Tour, Schnorcheln und Tauchen, Mahmya Insel oder weiteren Hurghada Sehenswürdigkeiten Ausflüge. Besuchen Sie die Pyramiden von Gizeh, das Tal der Könige oder beide auf einem kurzen ein- oder zweitägigen Ausflug nach Kairo oder Luxor. Wir sammeln auch all Hurghada ReiseTipps.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="collection-product-wrapper">
+                                    <div class="product-top-filter">
+                                        <div class="row">
+                                            <div class="col-xl-12">
+                                                <div class="filter-main-btn">
+                                                    <span class="filter-btn btn btn-theme">
+                                                        <i class="fa fa-filter"
+                                                           aria-hidden="true"></i> Filter
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="product-filter-content">
+                                                    <div class="search-count">
+                                                        <h5>Touren 1-24 von 10 Ergebnis werden angezeigt</h5>
+                                                    </div>
+                                                    <div class="collection-view">
+                                                        <ul>
+                                                            <li><i class="fa fa-th grid-layout-view"></i></li>
+                                                            <li><i class="fa fa-list-ul list-layout-view"></i></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="collection-grid-view">
+                                                        <ul>
+                                                            <li><img src="~/MainPage/assets/images/icon/2.png" alt="" class="product-2-layout-view"></li>
+                                                            <li><img src="~/MainPage/assets/images/icon/3.png" alt="" class="product-3-layout-view"></li>
+                                                            <li><img src="~/MainPage/assets/images/icon/4.png" alt="" class="product-4-layout-view"></li>
+                                                            <li><img src="~/MainPage/assets/images/icon/6.png" alt="" class="product-6-layout-view"></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="product-page-per-view">
+                                                        <select id="LocationEl">
+                                                            <option>
+                                                                Ort wählen
+                                                            </option>
+                                                            @foreach (var item in ViewBag.Location)
+                                                            {
+                                                                <option value="@item.LocationId">
+                                                                    @item.LocationName
+                                                                </option>
+                                                            }
+
+                                                        </select>
+                                                    </div>
+                                                    <div class="product-page-filter">
+                                                        <select id="CategoryEl">
+                                                            <option>
+                                                                Kategorie wählen
+                                                            </option>
+                                                            @foreach (var item in ViewBag.Category)
+                                                            {
+                                                                <option value="@item.CategoryId">
+                                                                    @item.CategoryName
+                                                                </option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="product-wrapper-grid">
+                                        <div class="row margin-res">
+                                            @foreach (var item in Model.SeachTours.ToList())
+                                            {
+                                                @if (item.TbTourOptions != null && item.TbPhotos.ToList().Count > 1)
+                                                {
+
+                                                    <div class="col-xl-3 col-6 col-grid-box">
+                                                        <div class="product-box">
+                                                            <div class="img-wrapper">
+                                                                <div class="front">
+                                                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId">
+                                                                        <img src="~/Uploads/Tours/@item.TbPhotos.ToList()[0].PhotoSrc" alt="photo" class="img-fluid blur-up lazyload bg-img">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="back">
+                                                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId">
+                                                                        <img src="~/Uploads/Tours/@item.TbPhotos.ToList()[1].PhotoSrc" alt="photo" class="img-fluid blur-up lazyload bg-img">
+                                                                    </a>
+                                                                </div>
+                                                                <div class="cart-info cart-wrap">
+                                                                    <button asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId">
+                                                                        <i class="ti-shopping-cart"></i>
+                                                                    </button> <a asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId" title="Add to Wishlist">
+                                                                        <i class="ti-heart" aria-hidden="true"></i>
+                                                                    </a> <a asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId" title="Quick View">
+                                                                        <i class="ti-search" aria-hidden="true"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="product-detail">
+                                                                <div>
+                                                                    <div class="rating">
+                                                                        @if (@item.TbTourOptions.Count > 0)
+                                                                        {
+                                                                            @for (int j = 1; j <= 5; j++)
+                                                                            {
+                                                                                @if (@Convert.ToInt32(item.TbTourOptions.ToList()[0].Rate) >= j)
+                                                                                {
+                                                                                    <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <i class="fa fa-star" style="color: #dddddd;"></i>
+
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                        }
+                                                                    </div>
+
+
+                                                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@item.TourId">
+                                                                        <h6>@item.TourTitel</h6>
+                                                                    </a>
+                                                                    <p>
+                                                                        @item.Description
+                                                                    </p>
+                                                                    @if (item.Sale > 0)
+                                                                    {
+                                                                        decimal? price = item.TourPrice - item.Sale;
+                                                                        <h4>
+                                                                            €@price
+                                                                            <del>€@item.TourPrice</del>
+                                                                        </h4>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <h4>
+                                                                            €@item.TourPrice
+                                                                        </h4>
+                                                                    }
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3 collection-filter">
+
+                    <div class="theme-card">
+                        <h5 class="title-border">Neues Produkt</h5>
+                        <div class="offer-slider slide-1">
+                            @if (Model.RightTours.ToList().Count > 4)
+                            {
+
+                                <div>
+                                    @for (int j = 0; j < 2; j++)
+                                    {
+                                        if (Model.RightTours.ToList()[j].TbPhotos.ToList().Count > 1)
+                                        {
+
+                                            <div class="media">
+                                                <a href=""><img class="img-fluid blur-up lazyload" src="~/Uploads/Tours/@Model.RightTours.ToList()[j].TbPhotos.ToList()[0].PhotoSrc" alt="photo"></a>
+                                                <div class="media-body align-self-center">
+                                                    <div class="rating">
+                                                        @if (@Model.RightTours.ToList()[j].TbTourOptions.ToList().Count > 0)
+                                                        {
+                                                            @for (int x = 1; x <= 5; x++)
+                                                            {
+                                                                @if (@Model.RightTours.ToList()[j].TbTourOptions.ToList()[0].Rate >= x)
+                                                                {
+                                                                    <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa fa-star" style="color: #dddddd;"></i>
+
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                        }
+                                                    </div>
+                                                    <a href="product-page(no-sidebar).html">
+                                                        <h6>@Model.RightTours.ToList()[j].TourTitel</h6>
+                                                    </a>
+
+                                                    @if (Model.RightTours.ToList()[j].Sale > 0)
+                                                    {
+                                                        decimal? price = Model.RightTours.ToList()[j].TourPrice - Model.RightTours.ToList()[j].Sale;
+                                                        <h4>
+                                                            €@price
+                                                            <del>€@Model.RightTours.ToList()[j].TourPrice </del>
+                                                        </h4>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h4>
+                                                            €@Model.RightTours.ToList()[j].TourPrice
+                                                        </h4>
+                                                    }
+
+
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                </div>
+                                <div>
+
+                                    @for (int j = 2; j < 4; j++)
+                                    {
+                                        if (Model.RightTours.ToList()[j].TbPhotos.ToList().Count > 1)
+                                        {
+
+                                            <div class="media">
+                                                <a href=""><img class="img-fluid blur-up lazyload" src="~/Uploads/Tours/@Model.RightTours.ToList()[j].TbPhotos.ToList()[0].PhotoSrc" alt="photo"></a>
+                                                <div class="media-body align-self-center">
+                                                    <div class="rating">
+                                                        @if (@Model.RightTours.ToList()[j].TbTourOptions.ToList().Count > 0)
+                                                        {
+                                                            @for (int x = 1; x <= 5; x++)
+                                                            {
+                                                                @if (@Model.RightTours.ToList()[j].TbTourOptions.ToList()[0].Rate >= x)
+                                                                {
+                                                                    <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <i class="fa fa-star" style="color: #dddddd;"></i>
+
+                                                                }
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                            <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                                        }
+                                                    </div>
+                                                    <a href="product-page(no-sidebar).html">
+                                                        <h6>@Model.RightTours.ToList()[j].TourTitel</h6>
+                                                    </a>
+                                                    @if (Model.RightTours.ToList()[j].Sale > 0)
+                                                    {
+                                                        decimal? price = Model.RightTours.ToList()[j].TourPrice - Model.RightTours.ToList()[j].Sale;
+                                                        <h4>
+                                                            €@price
+                                                            <del>€@Model.RightTours.ToList()[j].TourPrice </del>
+                                                        </h4>
+                                                    }
+                                                    else
+                                                    {
+                                                        <h4>
+                                                            €@Model.RightTours.ToList()[j].TourPrice
+                                                        </h4>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <!-- side-bar single product slider end -->
+                        <!-- side-bar banner start here -->
+                        <div class="collection-sidebar-banner">
+                            <a href="#"><img src="~/Photo//StoreLite.jpg" class="img-fluid blur-up lazyload" alt=""></a>
+                        </div>
+                        <!-- side-bar banner end here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- section End -->
+@section Scripts {
+    <script>
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+    </script>
+    <script src="~/MainPage/CustomJs/Store.js"></script>
+}

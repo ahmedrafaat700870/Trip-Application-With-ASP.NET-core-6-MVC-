@@ -1,0 +1,78 @@
+﻿@model BlogModel
+<div class="page-header">
+    <h3 class="page-title"> Department</h3>
+</div>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @if (Model.BlogId != 0)
+            {
+                <h4 class="card-title">Update Blog</h4>
+            }
+            else
+            {
+                <h4 class="card-title">Add Blog</h4>
+            }
+            <form class="forms-sample" method="post" role="form" enctype="multipart/form-data" asp-controller="Blog"
+                  asp-action="Save">
+                <input type="hidden" asp-for="BlogId" />
+                <input type="hidden" asp-for="BlogCreatedDate" />
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Blog Titel</label>
+                    <input asp-for="BlogTitel" type="text" class="form-control" id="exampleInputUsername1"
+                           placeholder="Username">
+                    <span asp-validation-for="BlogTitel" class="text-danger"></span>
+                </div>
+
+
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Created By</label>
+                    <input asp-for="BlogCreatedBy" type="text" class="form-control" id="exampleInputUsername1"
+                           placeholder="Username">
+                    <span asp-validation-for="BlogCreatedBy" class="text-danger"></span>
+                </div>
+                @if (Model.BlogId != 0)
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Update Category</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Add Category</button>
+                }
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,197 @@
+﻿@model ToursOptionModel
+<div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Option</h4>
+                <form class="forms-sample" asp-action="Save" asp-controller="Option" method="post"
+                    enctype="multipart/form-data" role="form">
+                    <input type="hidden" asp-for="TourOptionId" />
+                    <input type="hidden" asp-for="TourId" />
+                    <div class="form-group">
+                        <label for="exampleInputName1">Max people</label>
+                        <input asp-for="MaxPeople" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="MaxPeople" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Min people</label>
+                        <input asp-for="MinPeople" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="MinPeople" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Price</label>
+                        <input asp-for="Price" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Min Age</label>
+                        <input asp-for="MinAge" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="MinAge" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Day Count</label>
+                        <input asp-for="DayCount" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="DayCount" class="text-danger"></span>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Hour Count</label>
+                        <input asp-for="HourCount" type="number" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="HourCount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label">wifi available</label>
+                        @if (Model.isSelected)
+                        {
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" value="true"
+                                        checked> available <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" value="false">
+                                        not available <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-sm-4">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" value="true">
+                                        available <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="membershipRadios" checked
+                                        value="false"> not available <i class="input-helper"></i>
+                                    </label>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">date available</h4>
+                        <div class="input-group input-daterange d-flex align-items-center">
+                            <input asp-for="StartDate" type="text" class="form-control">
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                            <div class="input-group-addon mx-4">to</div>
+                            <input asp-for="EndDate" type="text" class="form-control">
+                            <span asp-validation-for="StartDate" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h4 class="card-title">rating</h4>
+                        <div class="br-wrapper br-theme-fontawesome-stars">
+                            <select id="example-fontawesome" name="rating" autocomplete="off" style="display: none;">
+                                @for (var i = 1; i <= 5; i++)
+                                {
+                                    @if (i == Convert.ToInt32(Model.Rate))
+                                    {
+                                        <option selected value="@i">@i</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@i">@i</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Description</label>
+                        <textarea asp-for="OptionDescription" class="form-control" id="exampleTextarea1"
+                            rows="4"></textarea>
+                        <span asp-validation-for="OptionDescription" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section PluginStyle {
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+<!-- End plugin css for this page -->
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="~/Admin/assets/vendors/dropzone/dropzone.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-1to10.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-horizontal.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-movie.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-pill.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-reversed.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bars-square.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/bootstrap-stars.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/css-stars.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/examples.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/fontawesome-stars-o.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-bar-rating/fontawesome-stars.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-asColorPicker/css/asColorPicker.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/x-editable/bootstrap-editable.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/dropify/dropify.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-file-upload/uploadfile.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/jquery-tags-input/jquery.tagsinput.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.min.css">
+<!-- End plugin css for this page -->
+}
+@section PluginScripts {
+<!-- Plugin js for this page -->
+<script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+<script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- Plugin js for this page -->
+<script src="~/Admin/assets/vendors/jquery-bar-rating/jquery.barrating.min.js"></script>
+<script src="~/Admin/assets/vendors/jquery-asColor/jquery-asColor.min.js"></script>
+<script src="~/Admin/assets/vendors/jquery-asGradient/jquery-asGradient.min.js"></script>
+<script src="~/Admin/assets/vendors/jquery-asColorPicker/jquery-asColorPicker.min.js"></script>
+<script src="~/Admin/assets/vendors/x-editable/bootstrap-editable.min.js"></script>
+<script src="~/Admin/assets/vendors/moment/moment.min.js"></script>
+<script src="~/Admin/assets/vendors/tempusdominus-bootstrap-4/tempusdominus-bootstrap-4.js"></script>
+<script src="~/Admin/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+<script src="~/Admin/assets/vendors/dropify/dropify.min.js"></script>
+<script src="~/Admin/assets/vendors/jquery-file-upload/jquery.uploadfile.min.js"></script>
+<script src="~/Admin/assets/vendors/jquery-tags-input/jquery.tagsinput.min.js"></script>
+<script src="~/Admin/assets/vendors/dropzone/dropzone.js"></script>
+<script src="~/Admin/assets/vendors/jquery.repeater/jquery.repeater.min.js"></script>
+<script src="~/Admin/assets/vendors/inputmask/jquery.inputmask.bundle.js"></script>
+<!-- End plugin js for this page -->
+}
+
+@section Scripts {
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/file-upload.js"></script>
+<script src="~/Admin/assets/js/typeahead.js"></script>
+<script src="~/Admin/assets/js/select2.js"></script>
+<!-- End custom js for this page -->
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/formpickers.js"></script>
+<script src="~/Admin/assets/js/form-addons.js"></script>
+<script src="~/Admin/assets/js/x-editable.js"></script>
+<script src="~/Admin/assets/js/dropify.js"></script>
+<script src="~/Admin/assets/js/dropzone.js"></script>
+<script src="~/Admin/assets/js/jquery-file-upload.js"></script>
+<script src="~/Admin/assets/js/formpickers.js"></script>
+<script src="~/Admin/assets/js/form-repeater.js"></script>
+<script src="~/Admin/assets/js/inputmask.js"></script>
+<!-- End custom js for this page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

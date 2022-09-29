@@ -1,0 +1,161 @@
+﻿@model List<VbToursLocationCategory>
+
+@if (Model == null)
+{
+    <div class="page-header">
+        <h3 class="page-title"> No Tour Please Add Tour</h3>
+        <a asp-controller="Tour" asp-action="Add" asp-route-id="@ViewBag.id" class="btn btn-gradient-danger btn-fw">
+            Add New
+            Tour
+        </a>
+    </div>
+}
+else
+{
+    <div class="page-header">
+        <h3 class="page-title"> Tours </h3>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <a asp-controller="Tour" asp-action="Add" asp-route-id="@ViewBag.id"
+                    class="btn btn-gradient-danger btn-fw">
+                        Add New Tour
+                    </a>
+                    <h4 class="card-title">Tour Table</h4>
+                    <select id="LocationEl">
+                        <option value="0">Sort By Location</option>
+                        @foreach (var item in ViewBag.Location)
+                        {
+                            <option value="@item.LocationId">@item.LocationName</option>
+                        }
+                    </select>
+                    <select id="CategoryEl">
+                        <option value="0">Sort By Category</option>
+                        @foreach (var item in ViewBag.Category)
+                        {
+                            <option value="@item.CategoryId">@item.CategoryName</option>
+                        }
+                    </select>
+                    <table id="order-listing" class="table">
+                        <thead>
+                            <tr>
+                                <th>Tour Name</th>
+                                <th> Photos</th>
+                                <th> Options</th>
+                                <th> Controller</th>
+                                <th> Is New</th>
+                                <th> Price</th>
+                                <th>Sale</th>
+                                <th> Category </th>
+                                <th> Location </th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var info in Model)
+                            {
+                                <tr>
+                                    <td>@info.TourTitel</td>
+                                    <td>
+                                        <a asp-controller="PhotosTour" asp-action="List" asp-route-id="@info.TourId"
+                                   class="btn btn-link btn-fw">
+                                            Go To Photos
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a asp-controller="Option" asp-action="List" asp-route-id="@info.TourId"
+                                   class="btn btn-link btn-fw">
+                                            Go To Options
+                                        </a>
+                                    </td>
+
+                                    <td>
+                                        <a asp-controller="Tour" asp-action="Add" asp-route-id="@info.TourId"
+                                   class="btn btn-outline-secondary btn-icon-text">
+                                            Update
+                                        </a>
+                                        <a asp-controller="Tour" asp-action="Delete" asp-route-id="@info.TourId"
+                                   class="btn btn-outline-success btn-icon-text">
+                                            Delete
+                                        </a>
+                                    </td>
+                                    <td>@info.isNew</td>
+                                    <td>@info.TourPrice</td>
+                                    <td>@info.Sale</td>
+                                    <td>@info.CategoryName</td>
+                                    <td>@info.LocationName</td>
+                                   
+                                  
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section PluginStyle {
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+<link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+<!-- End plugin css for this page -->
+}
+@section PluginScripts {
+<!-- Plugin js for this page -->
+<script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+<script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+<!-- End plugin js for this page -->
+<!-- Plugin js for this page -->
+<script src="~/Admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
+<script src="~/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<!-- End plugin js for this page -->
+}
+@section Scripts {
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/file-upload.js"></script>
+<script src="~/Admin/assets/js/typeahead.js"></script>
+<script src="~/Admin/assets/js/select2.js"></script>
+<!-- End custom js for this page -->
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/data-table.js"></script>
+<!-- End custom js for this page -->
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/toastDemo.js"></script>
+<script src="~/Admin/assets/js/desktop-notification.js"></script>
+<!-- End custom js for this page -->
+<script src="~/Admin/CustomeJs/Store.js"></script>
+
+}
+@if (ViewBag.status == "success" && ViewBag.message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            showSuccessToast('@ViewBag.message');
+            console.log('@ViewBag.message');
+        }
+        showSuccessToast('@ViewBag.message');
+        console.log('@ViewBag.message');
+    </script>
+}
+@if (ViewBag.status == "field" && ViewBag.message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            showDangerToast(@ViewBag.message);
+            console.log(@ViewBag.message);
+        };
+    </script>
+}
+<script>
+    window.onload = function () {
+        function goToRoute(CategoryId, LocationId) {
+            console.log("done", CategoryId, LocationId)
+            return window.location.href = "adminToAdminToPanel/Tours/Sort?CategoryId=${CategoryId}&LocationId?=${LocationId}";
+        }
+    }
+
+</script>

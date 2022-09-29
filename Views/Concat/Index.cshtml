@@ -1,0 +1,124 @@
+﻿@model ConcatModel
+    <!-- breadcrumb start -->
+    @{
+    ViewBag.Title = "Concat";
+}
+<div class="breadcrumb-section  medai">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                    <h2>Kontakt</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb End -->
+
+
+    <!--section start-->
+    <section class="contact-page section-b-space">
+        <div class="container">
+            <div class="row section-b-space">
+                <div class="col-lg-7 map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d227126.29069323136!2d33.78171045!3d27.19250455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x145287b2cd3dbbb3%3A0x2db807f98bd3c360!2z2KfZhNi62LHYr9mC2KnYjCDYp9mE2KjYrdixINin2YTYo9it2YXYsQ!5e0!3m2!1sar!2seg!4v1662309003677!5m2!1sar!2seg" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div class="col-lg-5">
+                    <div class="contact-right">
+                        <ul>
+                            <li>
+                                <div class="contact-icon"><img src="~/MainPage/assets/images/icon/phone.png"
+                                        alt="Generic placeholder image">
+                                <h6>Kontaktiere uns</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>@ViewBag.Information.InformationPhone</p>
+                                   
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>@ViewBag.Information.Location</p>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><img src="~/MainPage/assets/images/icon/email.png"
+                                        alt="Generic placeholder image">
+                                    <h6>Address</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>@ViewBag.Information.InformationEmail</p>
+                                  
+                                </div>
+                            </li>
+                            <li>
+                                <div class="contact-icon"><i class="fa fa-fax" aria-hidden="true"></i>
+                                    <h6>Fax</h6>
+                                </div>
+                                <div class="media-body">
+                                    <p>@ViewBag.Information.Facx</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <form class="theme-form"
+                    asp-action="Save" asp-controller="Concat"
+                    method="Post" enctype="multipart/form-data"
+                    role="form"
+                    >
+                        <div class="form-row">
+                            <div class="col-md-6">
+                            <label for="name">Vorname</label>
+                            <input asp-for="FirsName" type="text" class="form-control" id="name" placeholder="Gib deinen Namen ein"
+                                    required="">
+                            <span class="text-danger" asp-validation-for="FirsName"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                            <label for="email">Nachname</label>
+                            <input asp-for="LastName" type="text" class="form-control" id="last-name" placeholder="Geben Sie Ihren Nachnamen ein" required="">
+                            <span class="text-danger" asp-validation-for="LastName"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="review">Telefonnummer</label>
+                            <input asp-for="PhoneNumber" type="text" class="form-control" id="review" placeholder="Telefonnummer"
+                                    required="">
+                            <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email">Email</label>
+                            <input type="text" asp-for="EmailAddress" class="form-control" id="email" placeholder="Email" required="">
+                            <span class="text-danger" asp-validation-for="EmailAddress"></span>
+
+                            </div>
+                            <div class="col-md-12">
+                            <label for="review">Schreibe deine Nachricht</label>
+                            <textarea asp-for="Message" class="form-control" placeholder="Schreibe deine Nachricht"
+                                    id="exampleFormControlTextarea1" rows="6"></textarea>
+                            <span class="text-danger" asp-validation-for="Message"></span>
+
+                            </div>
+                            <div class="col-md-12">
+                            <button class="btn btn-solid" type="submit">Senden Sie Ihre Nachricht</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Section ends-->
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

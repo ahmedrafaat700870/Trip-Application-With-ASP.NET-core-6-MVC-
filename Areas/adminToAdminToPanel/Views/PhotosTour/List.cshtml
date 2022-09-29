@@ -1,0 +1,100 @@
+﻿@model CusPhotosTour
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add new photo</h4>
+                <form class="forms-sample" asp-controller="PhotosTour" asp-action="SaveNewImage"
+                      method="post" enctype="multipart/form-data" role="form">
+                    <input type="hidden" name="TourId" value="@Model.TbPhoto.TourId" />
+                    <div class="form-group">
+                        <label>Photo upload</label>
+                        <input name="Photo" type="file" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                        @if (ViewBag.Error != null)
+                        {
+                            <div style="margin-top: 10px; text-align : center ;" class="alert alert-danger" role="alert"> @ViewBag.Error</div>
+                        }
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+                @if (Model.TbPhotos.Count == 0)
+                {
+                    <div style="margin-top: 30px; text-align : center ;" class="alert alert-warning" role="alert"> No photo to show please Add Photos </div>
+                }
+            </div>
+        </div>
+
+        @if (Model.TbPhotos.Count > 0)
+        {
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row portfolio-grid">
+                                @*get from database*@
+                                @{
+                                    var data = new Dictionary<string, string>()
+                            {
+                            {"tourid" , Model.TbPhoto.TourId.ToString()} ,
+                            {"id" , "0"}
+                            };
+                                }
+                                @foreach (var photo in Model.TbPhotos)
+                                {
+                                    data["id"] = photo.PhotoId.ToString();
+                                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 col-12">
+                                        <figure class="effect-text-in">
+                                            <img src="~/Uploads/Tours/@photo.PhotoSrc" alt="image">
+                                            <figcaption>
+                                                <p><a style="text-decoration : none ; color : #fff;" asp-action="Delete" asp-controller="PhotosTour" asp-all-route-data="@data">Delete</a></p>
+                                            </figcaption>
+                                        </figure>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+}

@@ -1,0 +1,39 @@
+﻿@model FAQModel
+<div class="page-header">
+    <h3 class="page-title"> FAQ</h3>
+</div>
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @if (Model.id != 0)
+            {
+                <h4 class="card-title">Update FAQ</h4>
+            }
+            else
+            {
+                <h4 class="card-title">Add FAQ </h4>
+            }
+            <form class="forms-sample" method="post" role="form" enctype="multipart/form-data"asp-controller="FAQ" asp-action="Save">
+                <input type="hidden" asp-for="id" />
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Enter Question</label>
+                    <input asp-for="question" type="text" class="form-control" id="exampleInputUsername1" placeholder="question">
+                    <span asp-validation-for="question" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Enter Answer</label>
+                    <input asp-for="Answer" type="text" class="form-control" id="exampleInputUsername1" placeholder="Answer">
+                    <span asp-validation-for="Answer" class="text-danger"></span>
+                </div>
+                @if (Model.id != 0)
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Update FAQ</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Add FAQ</button>
+                }
+            </form>
+        </div>
+    </div>
+</div>

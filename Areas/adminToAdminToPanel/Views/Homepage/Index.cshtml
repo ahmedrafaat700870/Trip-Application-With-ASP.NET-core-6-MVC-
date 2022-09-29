@@ -1,0 +1,62 @@
+﻿@model string?
+<form class="content-wrapper" enctype="multipart/form-data" method="post" asp-action="SaveImage"
+    asp-controller="Homepage" role="form">
+    @if (Model != null)
+    {
+        <h2 class="text-danger" style="margin:auto;">@Model</h2>
+    }
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Main Image Please select Image size 1980 X 1080</h4>
+                    <input name="MainImage" type="file" class="dropify" required />
+                    @* <span asp-validation-for="MainImage" class="text-danger"></span> *@
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Main Image Please select Image size 380 X 300</h4>
+                    <input required name="SecondImage1" type="file" class="dropify"
+                        />
+                    @* <span asp-validation-for="SubImage1" class="text-danger"></span> *@
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 grid-margin  stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Main Image Please select Image size 380 X 300</h4>
+                    <input required name="SecondImage2" type="file" class="dropify"
+                        />
+                    @* <span asp-validation-for="SubImage2" class="text-danger"></span> *@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-gradient-primary btn-fw  " type="submit">Submit</button>
+</form>
+@section PluginScripts {
+<!-- Plugin js for this page -->
+<script src="~/Admin/assets/vendors/dropify/dropify.min.js"></script>
+<!-- End plugin js for this page -->
+}
+@section Scripts {
+<!-- Custom js for this page -->
+<script src="~/Admin/assets/js/dropify.js"></script>
+<!-- End custom js for this page -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}
+@section Style {
+<!-- Plugin css for this page -->
+<link rel="stylesheet" href="~/Admin/assets/vendors/dropify/dropify.min.css">
+<!-- End plugin css for this page -->
+}

@@ -1,0 +1,59 @@
+﻿@model InformationTeamPageModel
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Update About Us Page</h4>
+            <form class="forms-sample" method="post" role="form" enctype="multipart/form-data"
+                asp-controller="Team" asp-action="PageSave">
+                <input type="hidden" asp-for="@Model.InfoId" />
+                <input type="hidden" asp-for="@Model.PagePhoto" />
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Page Titel</label>
+                    <input asp-for="PageTitel" type="text" class="form-control" id="exampleInputUsername1" placeholder="Page Titel">
+                    <span asp-validation-for="PageTitel" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>photo upload</label>
+                    <input type="file" name="photo" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label for="exampleTextarea1">Page Description</label>
+                    <textarea asp-for="Description" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                    <button type="submit" class="btn btn-gradient-primary me-2">Update</button>
+               
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}

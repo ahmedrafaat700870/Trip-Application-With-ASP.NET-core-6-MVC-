@@ -1,0 +1,67 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.7.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="BL\CustomeModel\" />
+    <Folder Include="wwwRoot\MainPage\CustomeCss\" />
+    <Folder Include="wwwRoot\Uploads\HomePage\HeaderImages\" />
+    <Folder Include="wwwRoot\Uploads\HomePage\Logo\" />
+    <Folder Include="wwwRoot\Uploads\HomePage\Footer\" />
+    <Folder Include="wwwRoot\Uploads\Blog\" />
+    <Folder Include="wwwRoot\Uploads\Insetegram\" />
+    <Folder Include="wwwRoot\Uploads\Team\" />
+    <Folder Include="wwwRoot\Uploads\ReviewsBag\" />
+    <Folder Include="wwwRoot\Uploads\Tours\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Rresource\ResBlog.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResBlog.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Rresource\ResHeader.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResHeader.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Rresource\ResHomePage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResHomePage.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Rresource\ResBlog.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResBlog.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Rresource\ResHeader.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResHeader.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Rresource\ResHomePage.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResHomePage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

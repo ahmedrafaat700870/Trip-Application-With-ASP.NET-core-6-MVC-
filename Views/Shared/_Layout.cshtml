@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="multikart">
+    <meta name="keywords" content="multikart">
+    <meta name="author" content="multikart">
+    <meta name="google-site-verification" content="zV8fOEhnIe-d2h_xPk0Wbm099q9ibxrwSPbm6HwprWw" />
+    <link rel="icon" href="~/MainPage/assets/images/favicon/10.png" type="image/x-icon">
+    <link rel="shortcut icon" href="~/MainPage/assets/images/favicon/10.png" type="image/x-icon">
+    <!--Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/fontawesome.css">
+
+    <!--Slick flower/insta css-->
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/slick-theme.css">
+
+    <!-- Animate icon -->
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/animate.css">
+
+    <!-- Themify icon -->
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/themify-icons.css">
+
+    <!-- Bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/bootstrap.css">
+
+    <!-- Theme css -->
+
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/color13.css" media="screen" id="color">
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/color19.css" media="screen" id="color">
+
+    <link rel="stylesheet" type="text/css" href="~/MainPage/assets/css/color10.css" media="screen" id="color">
+
+    <link rel="stylesheet" type="text/css" href="~/MainPage/CustomeCss/Main.css" media="screen" id="color">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8680309495460078"
+            crossorigin="anonymous"></script>
+</head>
+
+<body class="tools-bg">
+    @await Component.InvokeAsync("Header")
+    @RenderBody()
+    @await Component.InvokeAsync("Footer")
+
+    <!-- theme setting -->
+    <div id="setting_box" class="setting-box">
+        <a href="javascript:void(0)" class="overlay" onclick="closeSetting()"></a>
+        <div class="setting_box_body">
+            <div onclick="closeSetting()">
+                <div class="sidebar-back text-left"><i class="fa fa-angle-left pr-2" aria-hidden="true"></i> Back</div>
+            </div>
+            <div class="setting-body">
+                <div class="setting-title">
+                    <h4>layout</h4>
+                </div>
+                <div class="setting-contant">
+                    <ul class="color-box">
+                        <li>
+                            <input id="ColorPicker1" type="color" value="#ff4c3b" name="Background">
+                            <span>theme deafult color</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- theme setting -->
+    <!-- Add to cart modal popup start-->
+    <div class="modal fade bd-example-modal-lg theme-modal cart-modal" id="addtocart" tabindex="-1" role="dialog"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        </div>
+    </div>
+    <!-- Add to cart modal popup end-->
+    <!-- tap to top -->
+    <div class="tap-top">
+        <div>
+            <i class="fa fa-angle-double-up"></i>
+        </div>
+    </div>
+
+
+
+    <!-- tap to top end -->
+    @*  <!-- slider parallax effect jquery-->
+    <script src="~/MainPage/assets/js/parallax-effect.js"></script>*@
+
+    <!-- latest jquery-->
+    <script src="~/MainPage/assets/js/jquery-3.3.1.min.js"></script>
+
+    <!-- menu js-->
+    <script src="~/MainPage/assets/js/menu.js"></script>
+
+    <!-- lazyload js-->
+    <script src="~/MainPage/assets/js/lazysizes.min.js"></script>
+
+    <!-- popper js-->
+    <script src="~/MainPage/assets/js/popper.min.js"></script>
+
+    <!-- slick js-->
+    <script src="~/MainPage/assets/js/slick.js"></script>
+
+    <!-- Bootstrap js-->
+    <script src="~/MainPage/assets/js/bootstrap.js"></script>
+
+    <!-- Bootstrap Notification js-->
+    <script src="~/MainPage/assets/js/bootstrap-notify.min.js"></script>
+
+    <!-- footer reveal js-->
+    <script src="~/MainPage/assets/js/footer-reveal.min.js"></script>
+
+    <!-- Theme js-->
+    <script src="~/MainPage/assets/js/script.js"></script>
+
+
+    @RenderSection("Scripts" , false)
+    <div class="sidebar-btn dark-light-btn">
+        <div class="dark-light">
+            <div class="theme-layout-version">Dark</div>
+        </div>
+    </div>
+    <script>
+        function openSearch() {
+            document.getElementById("search-overlay").style.display = "block";
+        }
+
+        function closeSearch() {
+            document.getElementById("search-overlay").style.display = "none";
+        }
+        $('footer').footerReveal();
+
+    </script>
+
+</body>
+
+</html>

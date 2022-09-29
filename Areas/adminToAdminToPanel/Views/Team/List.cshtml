@@ -1,0 +1,75 @@
+﻿@model List<TeamMemberModel>
+
+<div class="page-header">
+    <h3 class="page-title">  Team Member</h3>
+    <a asp-controller="Team" asp-action="Add" class="btn btn-gradient-danger btn-fw">
+        Add New
+        Team Member
+    </a>
+</div>
+
+@if (Model.Count > 0)
+{
+
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Team Table</h4>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> User </th>
+                            <th>  name </th>
+                            <th> Job </th>
+                            <th> IsAdmin </th>
+                            <th> Controller </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="py-1">
+                                    @if (item.TeamMemberPhoto == string.Empty)
+                                    {
+                                        <img src="~/Admin/assets/images/faces-clipart/pic-1.png" alt="image">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Uploads/Team/@item.TeamMemberPhoto"image">
+                                    }
+                                </td>
+                                <td> @item.TeamMeberName </td>
+                                <td> @item.TeamMebmerJob </td>
+
+                                @if (item.isAdmin)
+                                {
+                                    <td> Yes </td>
+                                }
+                                else
+                                {
+                                    <td> No </td>
+                                }
+                                <td>
+                                    <a asp-controller="Team" asp-action="Add" asp-route-id="@item.TeamMeberId"
+                               class="btn btn-link btn-fw">
+                                        Update
+                                    </a>
+                                    <a asp-controller="Team" asp-action="Delete" asp-route-id="@item.TeamMeberId"
+                               class="btn btn-outline-success btn-icon-text">
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="alert alert-warning" style="text-align: center ;"> No Team Member To Show </div>
+}

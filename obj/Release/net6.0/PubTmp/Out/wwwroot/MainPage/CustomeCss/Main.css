@@ -1,0 +1,10 @@
+@media screen and (min-width: 992px) {
+    .medai {
+        padding-top: 100px;
+    }
+}
+@media screen and (min-width: 992px) {
+    .headerPage {
+        font-size: 50px;
+    }
+}

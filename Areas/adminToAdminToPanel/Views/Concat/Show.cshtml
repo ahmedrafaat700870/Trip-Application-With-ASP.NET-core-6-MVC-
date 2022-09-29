@@ -1,0 +1,51 @@
+﻿@model ConcatModel
+<div class="page-header" style="text-align:center;">
+    <h3 class="page-title" style="margin: 20px auto;"> Message Information </h3>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputName1">First Name</label>
+                        <input asp-for="FirsName" type="text" class="form-control" required id="exampleInputName1" placeholder="First Name">
+                    </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Last Name</label>
+                    <input asp-for="LastName" type="text" class="form-control" required id="exampleInputName1" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputName1">Email</label>
+                    <input asp-for="EmailAddress" type="text" class="form-control" required id="exampleInputName1" placeholder="Email">
+                </div>
+                      <div class="form-group">
+                    <label for="exampleInputName1">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="text" class="form-control" required id="exampleInputName1" placeholder="Phone Number">
+                </div>
+                <div class="form-group">
+                        <label for="exampleTextarea1">Message</label>
+                        <textarea asp-for="Message" required class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Style {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}

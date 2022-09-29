@@ -1,0 +1,178 @@
+﻿@model ToursModel
+<div class="page-header">
+    <h3 class="page-title"> Tour </h3>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                @if (Model == null)
+                {
+                    <h4 class="card-title">Add Tour</h4>
+                }
+                else
+                {
+                    <h4 class="card-title">Update Tour</h4>
+                }
+                <form class="forms-sample" asp-action="Save" asp-controller="Tour"
+                      method="post" role="form"
+                      enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Tour Name</label>
+                        <input type="text" class="form-control" id="exampleInputName1" placeholder="Tour Name"
+                               asp-for="@Model.TourTitel">
+                        <span asp-validation-for="@Model.TourTitel" class="text-danger"></span>
+                    </div>
+                    <input type="hidden" asp-for="@Model.TourId" />
+                    <input type="hidden" asp-for="@Model.CreatedDate" />
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Highlight</label>
+                        <textarea class="form-control" asp-for="@Model.Description" id="exampleTextarea1"
+                                  rows="4"></textarea>
+                        <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Price:</label>
+                        <input asp-for="@Model.TourPrice" type="number" class="form-control">
+                        <span asp-validation-for="@Model.TourPrice" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" data-select2-id="7">
+                        <label>Select Location</label>
+                        @if (@Model == null)
+                        {
+
+                            <select required name="LocationId" class="form-control form-control-lg"
+                                id="exampleFormControlSelect1">
+                                <option value="" data-select2-id="3">Choose Location</option>
+                                @foreach (var item in ViewBag.Location)
+                                {
+                                    <option value="@item.LocationId" data-select2-id="3">@item.LocationName</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <select required name="LocationId" class="form-control form-control-lg"
+                                id="exampleFormControlSelect1">
+                                @foreach (var item in ViewBag.Location)
+                                {
+                                    @if (item.LocationId == Model.LocationId)
+                                    {
+                                        <option value="@item.LocationId" selected data-select2-id="3">@item.LocationName</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@item.LocationId" data-select2-id="3">@item.LocationName</option>
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                    <div class="form-group" data-select2-id="7">
+                        <label>Select Category</label>
+                        @if (@Model == null)
+                        {
+                            <select required name="DepartmentId" class="form-control form-control-lg"
+                                id="exampleFormControlSelect1">
+                                <option value="" data-select2-id="3">Choose Category</option>
+                                @foreach (var item in ViewBag.Category)
+                                {
+                                    <option value="@item.CategoryId" data-select2-id="3">@item.CategoryName</option>
+                                }
+                            </select>
+                        }
+                        else
+                        {
+                            <select required name="CategoryId" class="form-control form-control-lg"
+                                id="exampleFormControlSelect1">
+                                @foreach (var item in ViewBag.Category)
+                                {
+                                    @if (item.CategoryId == Model.CategoryId)
+                                    {
+                                        <option selected value="@item.CategoryId" data-select2-id="3">@item.CategoryName</option>
+                                    }
+                                    else
+                                    {
+
+                                        <option value="@item.CategoryId" data-select2-id="3">@item.CategoryName</option>
+                                    }
+                                }
+                            </select>
+                        }
+                    </div>
+                    <div class="form-group">
+                        <label>if Tour Contains Sale :</label>
+                        <input asp-for="@Model.Sale" type="number" class="form-control">
+                    </div>
+                    @if (Model.isNew)
+                    {
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" checked value="true"> is new<i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="false"> not new  <i class="input-helper"></i>
+                                </label>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="true"> is new<i class="input-helper"></i>
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" checked value="false"> not new  <i class="input-helper"></i>
+                                </label>
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group" data-select2-id="7">
+                        <label>Location In Home Page</label>
+
+                        <select class="form-control form-control-lg" asp-for="LocationHomePageId" asp-items="@(new SelectList(ViewBag.LocationHomePage ,"LocationHomePageId" , "LocationName"))">
+                            <option>Select one</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Video Src :</label>
+                        <input Caus asp-for="@Model.VideoSrc" type="text" class="form-control">
+                    </div>
+
+                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Style {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

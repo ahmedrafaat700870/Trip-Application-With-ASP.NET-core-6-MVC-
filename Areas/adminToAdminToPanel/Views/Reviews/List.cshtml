@@ -1,0 +1,99 @@
+﻿@model List<ReviewsBageModel>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+
+            @if (Model.Count > 0)
+            {
+                <h4 class="card-title">Reviews Tabel</h4>
+                <table id="order-listing_wrapper" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th> Name </th>
+                            <th> Date </th>
+                            <th> Likes</th>
+                            <th> DisLiks</th>
+                            <th>
+                                controller
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.name
+                                </td>
+                                <td> @item.CretaedDate </td>
+                                <td>
+                                    @item.Like
+                                </td>
+                                  <td>
+                                    @item.disLike
+                                </td>
+                                <td>
+                                    <a asp-action="Delete" asp-controller="Reviews" asp-route-id="@item.id" class="btn btn-gradient-danger btn-icon-text">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                </table>
+            }
+            else
+            {
+                <div style="text-align : center ; margin-top: 30px ;" class="alert alert-fill-warning" role="alert">
+                    <i class="mdi mdi-alert-circle"></i> No Reviews To Show Please Add Reviews
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/datatables.net/jquery.dataTables.js"></script>
+    <script src="~/Admin/assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/data-table.js"></script>
+    <!-- End custom js for this page -->
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/toastDemo.js"></script>
+    <script src="~/Admin/assets/js/desktop-notification.js"></script>
+    <!-- End custom js for this page -->
+}
+@if (ViewBag.status == "success" && ViewBag.message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            showSuccessToast('@ViewBag.message');
+            console.log('@ViewBag.message');
+        }
+        showSuccessToast('@ViewBag.message');
+        console.log('@ViewBag.message');
+    </script>
+}
+@if (ViewBag.status == "field" && ViewBag.message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            showDangerToast(@ViewBag.message);
+            console.log(@ViewBag.message);
+        }
+    </script>
+}

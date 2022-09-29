@@ -1,0 +1,109 @@
+﻿@model InformationModel
+<div class="page-header" style="text-align:center;">
+    <h3 class="page-title" style="margin: 20px auto;"> Add Information </h3>
+</div>
+<div class="row">
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">this information Already in WebSite</h4>
+                <p class="card-description"> if you want update it</p>
+                <form class="forms-sample" asp-action="Save"  method="post" enctype="multipart/form-data" role="form">
+                   <input type="hidden" asp-for="InformationId" />
+                    <div class="form-group">
+                        <label for="exampleInputName1">Web Site Name</label>
+                        <input asp-for="WebSiteName" type="text" class="form-control" required id="exampleInputName1" placeholder="Web Site">
+                        <span asp-validation-for="WebSiteName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail3">Email address</label>
+                        <input asp-for="InformationEmail" type="email" required class="form-control" id="exampleInputEmail3" placeholder="Email">
+                        <span asp-validation-for="InformationEmail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword4">FaceBook Acount</label>
+                        <input required asp-for="FaceBookAccount" type="text" class="form-control" id="exampleInputPassword4" placeholder="FaceBook.com">
+                        <span asp-validation-for="FaceBookAccount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Instegrame Acount</label>
+                        <input asp-for="InstagramAccount" required type="text" class="form-control" id="exampleInputCity1" placeholder="Instegrame.com">
+                        <span asp-validation-for="InstagramAccount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Twitter Acount</label>
+                        <input asp-for="TwitterAcount" required type="text" class="form-control" id="exampleInputCity1" placeholder="Twitter.com">
+                        <span asp-validation-for="TwitterAcount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Phone Number</label>
+                        <input asp-for="InformationPhone" required type="text" class="form-control" id="exampleInputCity1" placeholder="+20 01287580904">
+                        <span asp-validation-for="InformationPhone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Location</label>
+                        <input asp-for="Location" required type="text" class="form-control" id="exampleInputCity1" placeholder="Multikart Demo Store, Demo Store India 345-659">
+                        <span asp-validation-for="Location" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputCity1">Fax</label>
+                        <input asp-for="Facx" type="text" class="form-control" id="exampleInputCity1" placeholder="123456">
+                        <span asp-validation-for="Facx" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Logo Image</label>
+                        <input required type="file" name="LogoImage" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" asp-for="LogoImage" class="form-control file-upload-info"  placeholder="Logo Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                        <span asp-validation-for="LogoImage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Footer Image</label>
+                        <input required type="file" name="FooterImage" class="file-upload-default">
+                        <div class="input-group col-xs-12">
+                            <input type="text" asp-for="FooterImage" class="form-control file-upload-info"  placeholder="Footer Image">
+                            <span class="input-group-append">
+                                <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                            </span>
+                        </div>
+                        <span asp-validation-for="FooterImage" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Header Description</label>
+                        <textarea asp-for="DescriptionInfo" required class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                        <span asp-validation-for="DescriptionInfo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleTextarea1">Footer Description</label>
+                        <textarea asp-for="FooterDescription" required class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                        <span asp-validation-for="FooterDescription" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Style {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}

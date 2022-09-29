@@ -1,0 +1,62 @@
+﻿@model SectionNamesModel
+<div>
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Update Sections Header</h4>
+                <form class="forms-sample" asp-action="Save" asp-controller="SectionNames" method="post" enctype="multipart/form-data" role="form">
+                    <input type="hidden" asp-for="id" />
+         
+                    <div class="form-group">
+                        <label for="exampleInputName1">Popular Section</label>
+                        <input asp-for="PopuarSeaction" type="text" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="PopuarSeaction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Sea Section</label>
+                        <input asp-for="SeaSection" type="text" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="SeaSection" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Instegram Section</label>
+                        <input asp-for="InstegramSeaction" type="text" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="InstegramSeaction" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Blog Section</label>
+                        <input asp-for="BlogSeaction" type="text" class="form-control" id="exampleInputName1">
+                        <span asp-validation-for="BlogSeaction" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+    
+}
+
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.js"></script>
+}

@@ -1,0 +1,61 @@
+﻿@model List<FAQModel>
+@{
+    ViewBag.Title = "FAQs";
+}
+<!--section start-->
+<div style="    padding-top: 255px;">
+    <!-- breadcrumb start -->
+    <div class="breadcrumb-section" style="  background-color: white;">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="page-title">
+                        <h2>faq</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- breadcrumb end -->
+    <section class="faq-section section-b-space">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="accordion theme-accordion" id="accordionExample">
+                        @{
+                            string[] headings = { "headingOne", "headingTwo", "headingThree", "headingFour", "headingFive", "headingSix" };
+                            string[] collaps = { "collapseOne", "collapseTwo", "collapseThree", "collapseFour", "collapseFive", "collapseSix" };
+                        }
+                        @*// coming from database*@
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            string heaing = "heading" + Model[i].id;
+                            string Collapse = "Collapse" + Model[i].id;
+                            <div class="card">
+                                @*<div class="card-header" id="@headings[i]">*@
+                                <div class="card-header" id="@heaing">
+                                    <h5 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                        data-target="#@Collapse" aria-expanded="true" aria-controls="@Collapse">
+                                            @Model[i].question
+                                        </button>
+                                    </h5>
+                                </div>
+                                <div id="@Collapse" class="collapse show" aria-labelledby="@heaing"
+                                 data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <p>
+                                            @Model[i].Answer
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+<!--Section ends-->

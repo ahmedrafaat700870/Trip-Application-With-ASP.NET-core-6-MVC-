@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+https://go.microsoft.com/fwlink/?LinkID=208121.
+-->
+<Project>
+  <PropertyGroup>
+    <_PublishTargetUrl>C:\Users\Ahmed\Desktop\publish</_PublishTargetUrl>
+    <History>True|2022-09-16T00:07:12.5570194Z;True|2022-09-16T01:45:39.3441473+02:00;True|2022-09-15T03:47:31.0237047+02:00;True|2022-09-11T13:12:17.1693592+02:00;True|2022-09-10T14:20:36.8315253+02:00;True|2022-09-07T12:56:23.1240848+02:00;True|2022-09-06T15:11:19.0385568+02:00;True|2022-09-05T15:32:50.6450185+02:00;True|2022-09-04T22:07:23.3969600+02:00;True|2022-09-04T21:57:54.6857093+02:00;True|2022-09-04T18:37:49.6600029+02:00;True|2022-09-03T12:17:31.7740550+02:00;</History>
+    <LastFailureDetails />
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,88 @@
+﻿<!-- section start -->
+@model List<ReviewsBageModel>
+@{
+    ViewBag.Title = "Review";
+}
+<section class="section-b-space blog-detail-page review-page" style="padding-top: 250px">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                @if (Model.Count > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <ul class="comment-section">
+                            <li>
+                                <div class="media">
+                                    @if (item.src != string.Empty)
+                                    {
+                                        <img src=" ~/Uploads/ReviewsBag/@item.src"
+                                 alt="Generic placeholder image">
+                                    }
+                                    else
+                                    {
+                                        <img src="~/MainPage/assets/images/avtar.jpg"
+                                 alt="Generic placeholder image">
+                                    }
+                                    <div class="media-body">
+                                        <h6>@item.name<span>( @item.CretaedDate)</span></h6>
+                                        <p>
+                                            @item.description
+                                        </p>
+                                        <ul class="comnt-sec">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-thumbs-o-up"
+                                               aria-hidden="true"></i><span>(@item.Like)</span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="unlike">
+                                                        <i class="fa fa-thumbs-o-down"
+                                                   aria-hidden="true"></i>(@item.disLike)
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    }
+                }
+            </div>
+            @*    Comment Section Start *@
+            <div class="row blog-contact" style=" margin-top : 50px;">
+                <div class="col-sm-12">
+                    <h2>@ResBlog.BlogPageCommentSectionTitel</h2>
+                    <form class="theme-form" asp-action="Add" asp-controller="Reviews"
+                          method="post"
+                          role="form"
+                          enctype="multipart/form-data">
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <label for="name">@ResBlog.BlogPageCommentSectionName</label>
+                                <input required type="text" class="form-control" name="name" id="name" placeholder="Gib deinen Namen ein" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="email">@ResBlog.BlogPageCommentSectionEmail</label>
+                                <input required type="text" class="form-control" name="email" id="email" placeholder="Email" required="">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="exampleFormControlTextarea1">@ResBlog.BlogPageCommentSectionComment</label>
+                                <textarea required class="form-control" name="comment" placeholder="Schreiben Sie Ihren Kommentar" id="exampleFormControlTextarea1" rows="6"></textarea>
+                            </div>
+                            <div class="col-md-12">
+                                <button class="btn btn-solid" type="submit">@ResBlog.BlogPageCommentSectionSubmitButton</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            @*    Comment Section End *@
+        </div>
+    </div>
+</section>
+<!-- Section ends -->

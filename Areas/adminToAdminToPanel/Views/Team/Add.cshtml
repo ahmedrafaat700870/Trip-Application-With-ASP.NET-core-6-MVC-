@@ -1,0 +1,110 @@
+﻿@model TeamMemberModel
+
+<div class="col-md-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            @if (Model.TeamMeberId != 0)
+            {
+                <h4 class="card-title">Update Team Member</h4>
+            }
+            else
+            {
+                <h4 class="card-title">Add Team Member </h4>
+            }
+
+            <form class="forms-sample" method="post" role="form" enctype="multipart/form-data"
+                  asp-controller="Team" asp-action="Save">
+                <input type="hidden" asp-for="@Model.TeamMeberId" />
+                <input type="hidden" asp-for="@Model.TeamMemberPhoto" />
+                <input type="hidden" asp-for="@Model.isAdmin" />
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Team Member Name</label>
+                    <input asp-for="@Model.TeamMeberName" type="text" class="form-control" id="exampleInputUsername1" placeholder="Team Member Name">
+                    <span asp-validation-for="TeamMeberName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>photo upload</label>
+                    <input type="file" name="photo" class="file-upload-default">
+                    <div class="input-group col-xs-12">
+                        <input  type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                        <span class="input-group-append">
+                            <button class="file-upload-browse btn btn-gradient-primary" type="button">Upload</button>
+                        </span>
+                    </div>
+                   
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputUsername1">Team Member Job</label>
+                    <input asp-for="@Model.TeamMebmerJob" type="text" class="form-control" id="exampleInputUsername1" placeholder="Team Member Job">
+                    <span asp-validation-for="TeamMebmerJob" class="text-danger"></span>
+                </div>
+
+                @if (Model.isAdmin)
+                {
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" checked value="true"> Admin <i class="input-helper"></i>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="false"> Not Admin <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="form-group">
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="true"> Admin <i class="input-helper"></i>
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" checked value="false"> Not Admin <i class="input-helper"></i>
+                            </label>
+                        </div>
+                    </div>
+                }
+                <div class="form-group">
+                    <label for="exampleTextarea1">Team Member Job Description</label>
+                    <textarea asp-for="@Model.TeamMemberJobDescription" class="form-control" id="exampleTextarea1" rows="4"></textarea>
+                    <span asp-validation-for="@Model.TeamMemberJobDescription" class="text-danger"></span>
+                </div>
+
+                @if (Model.TeamMeberId != 0)
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Update Team Member</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-gradient-primary me-2">Add Team Member</button>
+                }
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section PluginStyle {
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2/select2.min.css">
+    <link rel="stylesheet" href="~/Admin/assets/vendors/select2-bootstrap-theme/select2-bootstrap.min.css">
+    <!-- End plugin css for this page -->
+}
+    @section PluginScripts {
+    <!-- Plugin js for this page -->
+    <script src="~/Admin/assets/vendors/select2/select2.min.js"></script>
+    <script src="~/Admin/assets/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <!-- End plugin js for this page -->
+}
+    @section Scripts {
+    <!-- Custom js for this page -->
+    <script src="~/Admin/assets/js/file-upload.js"></script>
+    <script src="~/Admin/assets/js/typeahead.js"></script>
+    <script src="~/Admin/assets/js/select2.js"></script>
+    <!-- End custom js for this page -->
+}

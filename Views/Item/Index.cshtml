@@ -1,0 +1,574 @@
+﻿@model CusItem
+@{
+    ViewBag.Title = "Tour";
+}
+<!-- section start -->
+<section style="padding-top: 255px;">
+    <div class="collection-wrapper">
+        <div class="container">
+            @if (Model.MainTour.TbTourOptions != null && Model.MainTour.TbTourOptions.ToList().Count > 1)
+            {
+                int Counter = 1;
+                <ul style="
+    text-align: center;
+    margin-bottom: 30px;
+" class="list-inline filter">
+                    @for (var i = 0; i < Model.MainTour.TbTourOptions.Count; i++)
+                    {
+                        Counter += i;
+                        <li style="margin-left: 20px;">
+                            <a class="btn btn-outline" asp-action="Index" asp-controller="Item" asp-route-id="@Model.MainTour.TourId" asp-route-optionId="@Model.MainTour.TbTourOptions.ToList()[i].TourOptionId" 
+                            >Option @Counter </a>
+                        </li>
+                    }
+                </ul>
+            }
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="product-slick">
+
+                        @for (var i = 0; i < Model.MainTour.TbPhotos.ToList().Count; i++)
+                        {
+                            <div>
+                                <img src="~/Uploads/Tours/@Model.MainTour.TbPhotos.ToList()[i].PhotoSrc" alt="photo"
+                                 class="img-fluid blur-up lazyload">
+                            </div>
+                        }
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12 p-0">
+                            <div class="slider-nav">
+                                @foreach (var photo in Model.MainTour.TbPhotos)
+                                {
+                                    <div>
+                                        <img src="~/Uploads/Tours/@photo.PhotoSrc" alt="photo"
+                                         class="img-fluid blur-up lazyload">
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="product-right product-description-box">
+                        <h2>@Model.MainTour.TourTitel</h2>
+                        <div class="rating three-star mb-2">
+                            @if (Model.TourtOption.Rate > 0)
+                            {
+
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    @if (i <= Model.TourtOption.Rate)
+                                    {
+                                        <i class="fa fa-star" style="color: #ffa200;"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-star" style="color : #dddddd;"></i>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                            }
+                        </div>
+                        <div class="product-icon mb-3">
+                            <ul class="product-social">
+                                <li><a href="@ViewBag.Information.FaceBookAccount"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="https://@ViewBag.Information.InformationEmail"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a href="@ViewBag.Information.TwitterAcount"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="@ViewBag.Information.InstagramAccount"><i class="fa fa-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                        <div class="row product-accordion">
+                            <div class="col-sm-12">
+                                <div class="accordion theme-accordion" id="accordionExample">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link" type="button"
+                                                        data-toggle="collapse" data-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                    Tour
+                                                    Anhang
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                             data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <p>
+                                                    @Model.TourtOption.OptionDescription
+                                                </p>
+                                                <div class="single-product-tables detail-section">
+                                                    <table>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Preis:</td>
+                                                                <td>@Model.TourtOption.Price</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="min-width: 149px;">Max Leute :</td>
+                                                                @if(Model.TourtOption.MaxPeople == 0)
+                                                                {
+                                                                    <td>Keine Begrenzung </td>
+                                                                } else {
+                                                                <td>@Model.TourtOption.MaxPeople :</td>
+                                                                }
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="min-width: 149px;">Min Leute :</td>
+                                                                @if(Model.TourtOption.MinPeople == 0)
+                                                                {
+                                                                    <td>Keine Begrenzung </td>
+                                                                } else {
+                                                                <td>@Model.TourtOption.MinPeople </td>
+                                                                }
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="min-width: 149px;" style="min-width: 149px;">Mindestalter :</td>
+                                                                @if (Model.TourtOption.MinAge == 0)
+                                                                {
+                                                                    <td>Keine Begrenzung</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>@Model.TourtOption.MinPeople</td>
+                                                                }
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="min-width: 149px;">WLAN :</td>
+                                                                @if (@Model.TourtOption.isSelected)
+                                                                {
+                                                                    <td>Verfügbar</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td>Nicht verfügbar</td>
+                                                                }
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="min-width: 149px;">Ort</td>
+                                                           @*     <td>@DateTime.Parse(Model.TourtOption.StartDate.ToString()).ToString("dd MMMM")</td>
+                                                          *@ 
+                                                      
+                                                                <td>@Model.MainTour.TbLocation.LocationName</td>
+                                                            </tr>
+                                                            
+
+                                                            @if (Model.TourtOption.DayCount != 0)
+                                                            {
+                                                                <tr>
+                                                                    <td style="min-width: 149px;"> Dauer :</td>
+                                                                    <td>@Model.TourtOption.DayCount </td>
+                                                                </tr>
+                                                            }
+                                                            @if (Model.TourtOption.HourCount != 0)
+                                                            {
+                                                                <tr>
+                                                                    <td style="min-width: 149px;">Stunde :</td>
+                                                                    <td>@Model.TourtOption.HourCount </td>
+                                                                </tr>
+                                                            }
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" type="button"
+                                                        data-toggle="collapse" data-target="#collapseTwo"
+                                                        aria-expanded="false" aria-controls="collapseTwo">
+                                                    Einzelheiten
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                             data-parent="#accordionExample">
+                                            <div class="card-body">
+                                                <div class="mt-2 text-center">
+                                                    <div>
+                                                        <div>
+
+                                                            <h5 style="font-width: bold;">Inbegriffen </h5>
+
+                                                        </div>
+                                                        <div>
+                                                            @foreach (var item in Model.TourtOption.TbIncludded)
+                                                            {
+                                                                @if (item.isIncluded)
+                                                                {
+                                                                    <p>✔️ @item.IncludedName </p>
+                                                                }
+                                                            }
+
+                                                        </div>
+                                                    </div>
+
+                                                    <div>
+                                                        <div style="margin-top: 30px ;">
+                                                            <div>
+                                                                <h5 style="font-width: bold;">Nicht In Begriffen </h5>
+
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            @foreach (var item in Model.TourtOption.TbIncludded)
+                                                            {
+                                                                @if (!item.isIncluded)
+                                                                {
+                                                                    <p>❌ @item.IncludedName </p>
+                                                                }
+                                                            }
+
+                                                        </div>
+                                                    </div>
+                                                    <div>
+                                                        <div style="margin-top: 30px;">
+                                                            <div>
+                                                                <h5 style="font-width: bold;"> Was Sie Mitnehmen Müssen </h5>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            @foreach (var item in Model.TourtOption.TbNeeded)
+                                                            {
+
+                                                                <p>✳ @item.tourNeededName </p>
+                                                            }
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div style="margin-top: 15px;" class="product-right product-form-box">
+                        @{
+                            decimal? price = Model.TourtOption.Price - Model.MainTour.Sale;
+                            decimal? DelPrice = Model.MainTour.TourPrice ;
+                        }
+                        @if (Model.MainTour.Sale > 0)
+                        {
+                            <h4><del>€@DelPrice</del></h4>
+                        }
+                        @if (price != null)
+                        {
+                            <h3>€@price</h3>
+                        }
+                        else
+                        {
+                            <h3>€0</h3>
+                        }
+                        <div style="margin-top: 15px;" class="product-description border-product">
+                            <h6 class="product-title">Zeiterinnerung</h6>
+                                <div class="timer">
+                                    <p id="demo">
+                                    <span>@ViewBag.Date[0] <span class="padding-l">:</span> <span class="timer-cal">Jahre</span> </span>
+                                        <span>
+                                            @ViewBag.Date[1] <span class="padding-l">:</span> <span class="timer-cal">Monat</span>
+                                    </span><span>@ViewBag.Date[2] <span class="padding-l">:</span> <span class="timer-cal">Tag</span> </span>
+                                    <span>@ViewBag.Date[3] <span class="timer-cal">Stunde</span></span>
+                                    </p>
+                                </div>
+                            @if(Model.MainTour.TbTourOptions.ToList().Count > 1)
+                            {
+    <div style="margin-top: 15px;" class="product-buttons">
+                                    <a href="https://wa.me/@ViewBag.PhoneNumber?text=Welcom%20%0AI%20Want%20To%20Book%20Tour%20(@Model.MainTour.TourTitel)%0AAnd%20I%20Want%20Option%20(Enter%20Your%20Option%20Number)%0A"
+                                class="btn btn-solid">Buchen</a>
+                        </div>
+                            } else {
+                                <div style="margin-top: 15px;" class="product-buttons">
+                                    <a href="https://wa.me/@ViewBag.PhoneNumber?text=Welcom%20%0AI%20Want%20To%20Book%20Tour%20(@Model.MainTour.TourTitel)" class="btn btn-solid">Buchen</a>
+                        </div>
+                            }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Section ends -->
+<!-- product-tab starts -->
+<section class="tab-product m-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-12">
+                <ul class="nav nav-tabs nav-material" id="top-tab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="top-home-tab" data-toggle="tab" href="#top-home"
+                           role="tab" aria-selected="true">Highlight </a>
+                        <div class="material-border"></div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-top-tab" data-toggle="tab" href="#top-profile"
+                           role="tab" aria-selected="false">Einzelheiten</a>
+                        <div class="material-border"></div>
+                    </li>
+                    @if (!string.IsNullOrEmpty(Model.MainTour.VideoSrc))
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-top-tab" data-toggle="tab" href="#top-contact"
+                           role="tab" aria-selected="false">Video</a>
+                            <div class="material-border"></div>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" id="review-top-tab" data-toggle="tab" href="#top-review"
+                           role="tab" aria-selected="false">Bewertung schreiben</a>
+                        <div class="material-border"></div>
+                    </li>
+                </ul>
+                <div class="tab-content nav-material" id="top-tabContent">
+                    <div class="tab-pane fade show active" id="top-home" role="tabpanel" aria-labelledby="top-home-tab">
+                        <p data-description="@Model.MainTour.Description" id="Description">
+                        </p>
+                    </div>
+                    <div class="tab-pane fade" id="top-profile" role="tabpanel" aria-labelledby="profile-top-tab">
+                        <p>
+                            @Model.TourtOption.OptionDescription
+                        </p>
+                        <div class="single-product-tables">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td>Preis :</td>
+                                        <td>@Model.TourtOption.Price</td>
+                                    </tr>
+                                    <tr>
+                                        <td style="min-width: 149px;">Max Leute :</td>
+                                        @if (Model.TourtOption.MaxPeople == 0)
+                                       {
+                                            <td>Keine Begrenzung</td>
+                                        } else {
+
+                                        <td>@Model.TourtOption.MaxPeople </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td style="min-width: 149px;">Min Leute :</td>
+                                       @if (Model.TourtOption.MaxPeople == 0)
+                                       {
+                                            <td>Keine Begrenzung</td>
+                                        } else {
+
+                                        <td>@Model.TourtOption.MinPeople </td>
+                                        }
+                                    </tr>
+                                    <tr>
+                                        <td style="min-width: 149px;" style="min-width: 149px;">Mindestalter :</td>
+                                        @if (Model.TourtOption.MinAge == 0)
+                                        {
+                                            <td>Keine Begrenzung</td>
+                                        }
+                                        else
+                                        {
+                                            <td>@Model.TourtOption.MinAge</td>
+                                        }
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="min-width: 149px;">WLAN :</td>
+                                        @if (@Model.TourtOption.isSelected)
+                                        {
+                                            <td>Verfügbar </td>
+                                        }
+                                        else
+                                        {
+                                            <td>Nicht verfügbar</td>
+                                        }
+                                    </tr>
+                                    @if (Model.TourtOption.DayCount != 0)
+                                    {
+                                        <tr>
+                                            <td style="min-width: 149px;"> Dauer :</td>
+                                            <td>@Model.TourtOption.DayCount </td>
+                                        </tr>
+                                    }
+                                    @if (Model.TourtOption.HourCount != 0)
+                                    {
+                                        <tr>
+                                            <td style="min-width: 149px;">Stunde :</td>
+                                            <td>@Model.TourtOption.HourCount </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @if (!string.IsNullOrEmpty(Model.MainTour.VideoSrc))
+                    {
+                        <div class="tab-pane fade" id="top-contact" role="tabpanel" aria-labelledby="contact-top-tab">
+                            <div class="mt-4 text-center">
+                                <iframe width="560" height="315" src="@Model.MainTour.VideoSrc"
+                                    allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    }
+                    <div class="tab-pane fade" id="top-review" role="tabpanel" aria-labelledby="review-top-tab">
+                        <form class="theme-form">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="media">
+                                        <label>Bewertung</label>
+                                        <div class="media-body ml-3">
+                                            <div class="rating three-star">
+                                                <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Enter Your name"
+                                           required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="email">Email</label>
+                                    <input type="text" class="form-control" id="email" placeholder="Email" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="review">Titel der Bewertung</label>
+                                    <input type="text" class="form-control" id="review"
+                                           placeholder="Enter your Review Subjects" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="review">Titel der Bewertung</label>
+                                    <textarea class="form-control" placeholder="Wrire Your Testimonial Here"
+                                              id="exampleFormControlTextarea1" rows="6"></textarea>
+                                </div>
+                                <div class="col-md-12">
+                                    <button class="btn btn-solid" type="submit">Geben Sie Ihre Bewertung</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- product-tab ends -->
+<!-- product section start -->
+<section class="section-b-space ratio_asos">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 product-related">
+                <h2>verwandte Touren</h2>
+            </div>
+        </div>
+        <div class="row search-product">
+            @foreach (var tour in Model.ToursRelated)
+            {
+                @if (tour.TbPhotos.ToList().Count != 0)
+                {
+                    <div class="col-xl-2 col-md-4 col-sm-6">
+                        <div class="product-box">
+                            <div class="img-wrapper">
+                                <div class="front">
+                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@tour.TourId">
+                                        <img src="~/Uploads/Tours/@tour.TbPhotos.ToList()[0].PhotoSrc" alt="photo"
+                                     class="img-fluid blur-up lazyload bg-img">
+                                    </a>
+                                </div>
+                                <div class="back">
+                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@tour.TourId">
+                                        <img src="~/Uploads/Tours/@tour.TbPhotos.ToList()[1].PhotoSrc" alt="photo"
+                                     class="img-fluid blur-up lazyload bg-img">
+                                    </a>
+                                </div>
+                                <div class="cart-info cart-wrap">
+                                    <button asp-action="Index" asp-controller="Item" asp-route-id="@tour.TourId" title="Add to cart">
+                                        <i class="ti-shopping-cart"></i>
+                                    </button>
+                                    <a asp-action="Index" asp-controller="Item" asp-route-id="@tour.TourId"
+                               title="Add to Wishlist">
+                                        <i class="ti-heart" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="product-detail">
+                                <div class="rating">
+                                    @if (@tour.TbTourOptions.Count > 0)
+                                    {
+                                        @for (int i = 1; i <= 5; i++)
+                                        {
+                                            @if (@Convert.ToInt32(tour.TbTourOptions.ToList()[0].Rate) >= i)
+                                            {
+                                                <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                            }
+                                            else
+                                            {
+                                                <i class="fa fa-star" style="color: #dddddd;"></i>
+
+                                            }
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                        <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                        <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                        <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                        <i class="fa fa-star" style="color:#ffa200 ;"></i>
+                                    }
+                                </div>
+                                <a asp-action="Index" asp-controller="Item" asp-route-id="@tour.TourId">
+                                    <h6>@tour.TourTitel</h6>
+                                </a>
+                                   @{
+                                       decimal? Price = tour.TourPrice - tour.Sale;
+                                   }
+                                @if (tour.Sale > 0)
+                                {
+                                 
+                                    <h4>
+                                        €@Price
+                                        <del>€@tour.TourPrice</del>
+                                    </h4>
+                                }
+                                else
+                                {
+                                    <h4>
+                                        €@tour.TourPrice
+                                    </h4>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+<!-- product section end -->
+@section Scripts {
+          <!-- Theme js-->
+    <script src="~/MainPage/CustomJs/Item.Js"></script>   
+}
+@*<script>
+        Console.log('@Model.MainTour.Description');
+     document.onload = function () {
+        Console.log('@Model.MainTour.Description');
+        document.getElementById("Description").innerHTML = '@Model.MainTour.Description';
+     }
+</script>*@
